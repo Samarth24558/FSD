@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const RegisterFees = () => {
 	
 	const[data,setData]=useState({stud:"",total_fees:"",fees_paid:"",paid_date:""})
-	const [err,setErr]=useState("")
+	const [err,setErr]=	useState("")
 
 	const navigate=useNavigate()
 

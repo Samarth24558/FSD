@@ -22,6 +22,7 @@ const getStudents=async()=>
   const res=await axios.get("http://localhost:8000/")
   setLength(res.data.length)
   setStudents(res.data)
+  console.log(res)
 }
 useEffect(()=>
 {
@@ -70,7 +71,7 @@ useEffect(()=>
       <div className="card-body">        
         <h2>CS Students</h2>
         <h4>{cs}</h4>
-      </div>
+      </div>    
     </div>
     <div className="card" style={{maxWidth:"18rem"}}>
       <div className="card-body">
@@ -80,7 +81,7 @@ useEffect(()=>
     </div>
     <div className="card" style={{maxWidth:"18rem"}}>
       <div className="card-body">
-        <h2>CE Students</h2>
+        <h2>CE Students</h2>  
         <h4>{ce}</h4>
       </div>
     </div>

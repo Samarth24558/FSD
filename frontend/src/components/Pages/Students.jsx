@@ -12,6 +12,7 @@ import img from './Images/logo.png'
 const ContentMain = () => {
 
   const [data,setData]=useState([]);
+  const [message,setMessage]=	useState("")
   const [value,setValue]=useState("");
   const [sortType,setSort]=useState("");
   const year=new Date().getFullYear()
@@ -33,7 +34,7 @@ const ContentMain = () => {
         Axios.delete(`http://localhost:8000/deletestud/${stud_id}`)
         .then((res)=>{
           window.location.reload();
-          alert("Deleted successfully ✅ ");
+          setMessage("Deleted successfully ✅ ");
         })
         .catch((err)=>{
           console.log(err)
@@ -63,9 +64,11 @@ const ContentMain = () => {
       const res=await Axios.post("http://localhost:8000/converttoxl",extendData)
       .then((res)=>
       {
-        console.log(res.message)
-        alert(res.data.message)
+      
+        setMessage(res.data.message)
+        
       })
+      
     }
 
   const handleSearch=(e)=>
@@ -89,11 +92,20 @@ const ContentMain = () => {
   }
 
  
+
+ 
   useEffect(()=>
   {
     fetchData();
 
   },[10])
+
+  setTimeout(()=>
+    {
+      setMessage("");
+    },4000)
+
+  
 
   
 
@@ -105,6 +117,8 @@ const ContentMain = () => {
 
     <div className="main-content-holder" >
       <h1><img src={img} alt="logo" style={{height:"60px"}} /> Students Basic Details </h1> 
+	{message && <div className="alert alert-success" role="alert"><h4>{message}</h4></div>}
+
       <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
         <div className="cont2">
       <select id="inputState" className="form-control" onChange={(e)=>setSort(e.target.value)}>

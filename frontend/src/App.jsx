@@ -34,7 +34,7 @@ const AppLayout = () => {
         <Route path='/Students' element={<Students />} />
         <Route path='/Register' element={<Register />} />
         <Route path='/CIE' element={<CIE />} />
-        <Route path='/CIEB' element={<CIEB />} />
+        <Route path='/CIEB/:invoice_no' element={<CIEB />} />
         <Route path='/RegisterCIE' element={<RegisterCIE />} />
         <Route path='/Fees' element={<Fees />} />
         <Route path='/RegisterFees' element={<RegisterFees />} />
@@ -45,6 +45,7 @@ const AppLayout = () => {
         <Route path='/feesinvoice/:invoice_no' element={<Feesinvoice />} />
         <Route path='/updatefees/:invoice_no' element={<UpdateFees />} />
         <Route path='/updateannualday/:invoice_no' element={<UpdateAnnualday />} />
+
       </Routes>
     </div>
   );

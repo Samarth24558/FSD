@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 function Register_Annualaday() {
 
   const [data,setData]=useState({student:"",date:"",compitation_name:""})
+  const [err,setErr]=useState("")
+
 
   const navigate=useNavigate();
 
@@ -22,12 +24,21 @@ function Register_Annualaday() {
       alert("Record details Added successfully ✅") 
 			navigate("/Annualday")
     })
+	.catch((err)=>
+	{
+		console.log(err)
+	if(err.response.data.student)
+		{
+			setErr("Student with register no does not exist ")
+		}
+	})
   
   }
 
   return (
     <>
     <h1>Register Annualady</h1><br />
+	{err && <div className="alert alert-danger" role="alert"><h4>{err}</h4></div>}
     <form action=""  onSubmit={handleSubmit}>
 	<div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 		<div className="card h-100">

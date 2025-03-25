@@ -101,7 +101,6 @@ function Annualday() {
       <th scope="col">Registration No</th>
       <th scope="col">Date</th>
       <th scope="col">Compitation Name</th>
-      <th scope="col">Sem</th>
       <th scope="col">Actions</th>
 
     </tr>
@@ -113,7 +112,6 @@ function Annualday() {
       <th scope="row">{index.student}</th> 
       <td>{index.date}</td>
       <td>{index.compitation_name}</td>
-      <td></td>
       <td><a href={`updateannualday/${index.invoice_no}`}  class="btn btn-success">🔄 </a> 
       <button type="button" onClick={()=>handleDelete(index.invoice_no)} class="btn btn-danger">🗑️ </button></td>
 

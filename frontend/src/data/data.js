@@ -7,8 +7,8 @@ export const navigationLinks = [
     { id: 4, title: 'CIE', image: iconsImgs.budget },
     { id: 5, title: 'RegisterCIE', image: iconsImgs.budget },
     { id: 6, title: 'Fees', image: iconsImgs.budget },
-    { id: 8, title: 'Annualday', image: iconsImgs.report },
-    { id: 9, title: 'Settings', image: iconsImgs.gears },
+    { id: 7, title: 'Annualday', image: iconsImgs.report },
+    // { id: 8, title: 'Settings', image: iconsImgs.gears },
 
 
 ];

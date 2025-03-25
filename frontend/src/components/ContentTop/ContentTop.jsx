@@ -7,6 +7,11 @@ const ContentTop = () => {
   const { toggleSidebar } = useContext(SidebarContext);
   const [time,setTime]=useState(new Date());
 
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+    'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
+  ];
+
   useEffect(()=>
   {
     const interval=setInterval(()=>
@@ -18,7 +23,7 @@ const ContentTop = () => {
   return (
     <>
     <div className="cont">
-    <h2>{time.toLocaleTimeString()}</h2>  
+    <h2>{time.toLocaleTimeString()} {new Date().getDate()}/{months[new Date().getMonth()]}/{new Date().getFullYear()}</h2>  
     </div>
     </>
   )

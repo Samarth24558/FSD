@@ -1,13 +1,37 @@
 import "./Style.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+
 
 
 function CIE() {
+  const [writtenData,setWrittendata]=useState([]);
+  
+    
+  const getData=()=>
+    {
+      axios.get("http://localhost:8000/getciewritten")
+      .then((res)=>{
+        console.log(res.data)
+        setWrittendata(res.data)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+    } 
+    useEffect(()=>{
+      getData();
+  
+    },[10])
+
+
   return (
     <div className="main-content-holder">
       <h1>Continuous Internal Evaluation (CIE)</h1>
       <form className="form-inline my-2 my-lg-0">
       <select id="inputState" className="form-control">
-        <option selected> SELECT SEMISTER</option>
+        <option selected>SELECT SEMISTER</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -17,55 +41,29 @@ function CIE() {
       </select> 
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">🔍</button>
     </form>
-     <table class="table table-bordered table-striped ">
-  <thead class="thead-dark">
+    <table className="table table-bordered table-striped">
+  <thead className="thead-dark">
     <tr>
-    <th scope="col">Invoice No</th>    
       <th scope="col">Registration No</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">CIE NO.</th>
-      <th scope="col">Branch</th>
       <th scope="col">Sem</th>
-      <th scope="col">Subject Code</th>
-      <th scope="col">Subject Name</th>
-      <th scope="col">Marks Obtained</th>
-      <th scope="col">Total Marks</th>
+      <th scope="col">NO. CIE</th>
       <th scope="col">Actions</th>
-
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">460CS22011</th>
-      <th scope="row">460CS22011</th>
-
-      <td>Samarth</td>
-      <td>1</td>
-      <td>CS</td>
-      <td>5</td>
-      <td>80</td>
-      <td>100</td>
-      <td>70</td>
-      <td>80</td>
-      <td><button type="button"  class="btn btn-success">🔄 </button> 
-      <button type="button" class="btn btn-danger">🗑️ </button></td>
-
-    </tr>
-     <tr>
-      <th scope="row">NUll</th>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-      <td>NUll</td>
-    </tr>
+    {[...new Map(writtenData.map(item => [item.stud, item])).values()].map((index) => (
+      <tr key={index.stud}>
+        <th scope="row">{index.stud}</th>
+        <td>{index.sem}</td>
+        <td>5</td>
+        <td>
+          <a href={`CIEB/${index.stud}`} className="btn btn-info">👁</a>
+        </td>
+      </tr>
+    ))}
   </tbody>
 </table>
+
     </div>
   )
 }
